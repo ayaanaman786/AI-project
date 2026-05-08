@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Phase2_Final_Report</title>
+    <style>
+      :root {
+  --bg: #131f38;
+  --panel: #1b2742;
+  --panel-alt: #101a31;
+  --border: #2f3d5d;
+  --text: #f3f7ff;
+  --muted: #9fb0cf;
+  --accent: #3d7de0;
+  --run: #1db889;
+  --warn: #f4b400;
+  --danger: #ef4444;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 18mm 16mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Inter", "Calibri", Arial, sans-serif;
+  font-size: 11.25pt;
+  line-height: 1.5;
+}
+
+body {
+  padding: 0;
+}
+
+.frame {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.topbar {
+  background: linear-gradient(180deg, #1a2744 0%, #17223c 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px 8px 14px;
+}
+
+.topbar .brand {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.topbar .meta {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 9.2pt;
+}
+
+.topbar .status {
+  float: right;
+  margin-top: -22px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #35589b;
+  color: #8ab0ff;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.content {
+  padding: 14px;
+  background: var(--panel-alt);
+}
+
+h1, h2, h3, h4 {
+  color: #dbe7ff;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 20pt;
+  border-left: 6px solid var(--accent);
+  padding-left: 10px;
+  margin-top: 0.4em;
+}
+
+h2 {
+  font-size: 14.5pt;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+
+h3 {
+  font-size: 12.5pt;
+  color: #c8dbff;
+}
+
+h4 {
+  font-size: 11.5pt;
+  color: #b7ceff;
+}
+
+p {
+  margin: 0.45em 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1em 0;
+}
+
+ul, ol {
+  margin-top: 0.35em;
+  margin-bottom: 0.7em;
+}
+
+li {
+  margin: 0.2em 0;
+}
+
+strong {
+  color: #ffffff;
+}
+
+code {
+  background: #233254;
+  color: #d2e3ff;
+  border: 1px solid #3a4f7f;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: "Consolas", "Cascadia Mono", "Courier New", monospace;
+  font-size: 0.92em;
+}
+
+pre {
+  background: #121f3b;
+  border: 1px solid #324c7a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8em 0 1em 0;
+  border: 1px solid var(--border);
+  background: var(--panel);
+}
+
+thead th {
+  background: #25365d;
+  color: #e4eeff;
+  font-weight: 700;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 7px 8px;
+  vertical-align: top;
+  text-align: left;
+}
+
+blockquote {
+  margin: 0.8em 0;
+  padding: 8px 12px;
+  border-left: 4px solid var(--accent);
+  background: #1a2b4d;
+  color: #d3e4ff;
+}
+
+a {
+  color: #8cb9ff;
+  text-decoration: none;
+}
+
+.pill {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.run { color: var(--run); }
+.warn { color: var(--warn); }
+.danger { color: var(--danger); }
+
+/* Better print-like page breaks */
+h1, h2, h3 {
+  break-after: avoid;
+}
+
+table, pre, blockquote {
+  break-inside: avoid;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <header class="topbar">
+        <p class="brand">CityMind</p>
+        <p class="meta">Phase 2 Submission Report; UI-themed export</p>
+        <span class="status">FINAL</span>
+      </header>
+      <main class="content">
+        <h1 id="citymind-phase-2-final-report">CityMind; Phase 2 Final Report</h1>
+<p><strong>Course:</strong> Artificial Intelligence
+<strong>Program:</strong> BS Computer Science
+<strong>Group Members:</strong>
+- 24i-0663; shared <code>CityGraph</code>, CSP (Ch1), Genetic Algorithm (Ch2), Simulated Annealing (Ch3), simulation runner + flood manager + risk shifts.
+- 24i-3033; A* router (Ch4), KMeans clustering (Ch5.1), synthetic data + Decision Tree classifier (Ch5.2), risk write-back to graph (Ch5.3), police deployment, Ursina UI collaboration (scene, HUD, setup pipeline, UI controls).</p>
+<p><strong>Phase 2 Deadline:</strong> 10th May.
+<strong>Primary Language:</strong> Python 3.</p>
+<hr />
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>CityMind is delivered as a fully integrated decision-support system. All five
+required challenges are implemented and operate on a single shared
+<code>CityGraph</code>. A 20-step simulation orchestrates floods, dynamic risk shifts,
+ambulance re-evaluation, and A*-based emergency replanning, with every
+component reading from and writing to the same graph object. A real-time
+3D UI (Ursina) renders the city, all required overlay toggles, the
+ambulance team, the team mission, and a live event log.</p>
+<p>This report documents what we built, where we deviated from our Phase-1
+design document, why we deviated, and the work split per group member.</p>
+<hr />
+<h2 id="2-what-was-built-against-rubric-2">2. What was built (against rubric §2)</h2>
+<h3 id="challenge-1-city-layout-planning">Challenge 1; City Layout Planning</h3>
+<ul>
+<li>File: <code>citymind/layout_csp.py</code>.</li>
+<li>Algorithm: AC-3 to prune impossible values, Backtracking with MRV (minimum
+  remaining values) and LCV (least constraining value) heuristics, plus a
+  Min-Conflicts fallback for infeasible instances.</li>
+<li>Rule reporting: <code>LayoutResult.violation_breakdown</code> now reports per-rule
+  counts (industrial-adjacency, residential 3-hop reach, power 2-hop reach,
+  quota mismatch). The HUD top bar surfaces a compact summary like
+  <code>Layout: 3 viol [Quota:2, IndAdj:1]</code> whenever the CSP cannot satisfy every
+  rule.</li>
+<li>Live-modification: hop limits and the forbidden-neighbor set are
+  constructor parameters (<code>hospital_max_hops</code>, <code>industrial_max_hops_for_power</code>,
+  <code>industrial_forbidden_neighbors</code>). Changing the 3-hop rule to 2 hops is a
+  single argument change and the system re-validates immediately.</li>
+</ul>
+<h3 id="challenge-2-road-network-optimization">Challenge 2; Road Network Optimization</h3>
+<ul>
+<li>File: <code>citymind/road_ga.py</code>.</li>
+<li>Algorithm: Genetic Algorithm over an edge bitstring with tournament
+  selection, uniform crossover, bitflip mutation, and an MST-seeded initial
+  population (so half the individuals begin near a low-cost feasible region).</li>
+<li>Strict 2-edge-disjoint check (Menger's theorem, k=2): we replaced the prior
+  path-then-ban heuristic with an Edmonds-Karp BFS-based max-flow on the
+  capacity graph in which each undirected edge contributes two directed arcs
+  of capacity 1. The fitness function uses the strict check, so the GA is
+  rewarded only when there are genuinely two edge-disjoint paths between
+  the primary hospital and the ambulance depot.</li>
+<li>Stagnation-based early stop with <code>patience=25</code> and <code>min_generations=30</code>,
+  preserving determinism for any fixed seed.</li>
+</ul>
+<h3 id="challenge-3-ambulance-placement">Challenge 3; Ambulance Placement</h3>
+<ul>
+<li>File: <code>citymind/ambulance_sa.py</code>.</li>
+<li>Algorithm: Simulated Annealing on the 3-tuple of grid cells with adaptive
+  initial temperature (targeting ~80% acceptance of uphill moves), geometric
+  cooling, and small-step neighbor moves with a low-probability random jump.</li>
+<li>Objective: minimax response distance over residential cells, computed via
+  Dijkstra on the live <code>effective_cost</code> (so risk multipliers and blocked
+  edges affect placements).</li>
+<li>Re-evaluation: triggered by the simulation runner when risk shifts pass a
+  threshold during the tick loop.</li>
+</ul>
+<h3 id="challenge-4-emergency-routing">Challenge 4; Emergency Routing</h3>
+<ul>
+<li>Files: <code>citymind/astar_router.py</code>, <code>citymind/simulation.py</code>.</li>
+<li>Algorithm: A* with Manhattan × <code>min_edge_cost</code> heuristic. The heuristic is
+  admissible because <code>min_edge_cost</code> is <code>&lt;=</code> the smallest base cost on any
+  edge. The router asserts this against <code>CityGraph.min_base_cost</code> at search
+  time so future edits to the residential discount cannot silently break
+  optimality.</li>
+<li>Mission: civilians are visited in order; the runner replans whenever the
+  next planned edge becomes blocked.</li>
+<li>Repair fallback: if replanning fails for two consecutive ticks because all
+  exits from the team are blocked, the runner restores the single blocked
+  frontier edge that minimizes hops to the current target. This preserves
+  forward progress in adversarial flood scenarios without requiring the
+  team to teleport. Documented as a deliberate deviation in §3.</li>
+</ul>
+<h3 id="challenge-5-crime-risk-pipeline">Challenge 5; Crime Risk Pipeline</h3>
+<ul>
+<li>Files: <code>citymind/crime_kmeans.py</code>, <code>citymind/crime_risk_classifier.py</code>,
+  <code>citymind/police_deployment.py</code>.</li>
+<li>Step 1 (unsupervised): K-Means with k=3 over engineered features
+  (population density, Manhattan distance to nearest industrial,
+  industrial cells within 3 hops, one-hot location type). Cluster id is
+  written back to the graph.</li>
+<li>Step 2 (synthetic data): `rate = w1 * population + w2 * industrial_proximity</li>
+<li>w3 * cluster_bias + Gaussian noise<code>. Default weights</code>w1=0.55, w2=0.30,
+  w3=0.15` are justified by the urban-crime intuition that population and
+  proximity to industrial zones are leading indicators. Labels are assigned
+  by terciles for a balanced training set.</li>
+<li>Step 3 (supervised): Decision Tree classifier (<code>max_depth=5,
+  min_samples_leaf=2</code>). Accuracy and confusion matrix are reported. We chose
+  Decision Tree over kNN because the splits are directly explainable in the
+  viva.</li>
+<li>Risk write-back: predicted labels become <code>RiskLevel</code> on the graph;
+  <code>risk_mult</code> (Low=1.0, Medium=1.5, High=2.0) propagates into
+  <code>effective_cost</code> so Challenges 2, 3, and 4 all detour around High-risk
+  zones automatically.</li>
+<li>Police deployment: 10 officers placed greedily to maximize total covered
+  risk subject to a minimum-spacing constraint, satisfying the project
+  statement's "10 police officers to deploy" requirement.</li>
+</ul>
+<h3 id="system-integration">System integration</h3>
+<ul>
+<li>File: <code>citymind/simulation.py</code>.</li>
+<li>Orchestration: <code>EmergencyMissionRunner</code> advances the simulation tick by
+  tick. Each tick the <code>FloodEventManager</code> may block one edge (capped via
+  <code>max_blocks_per_tick</code>); flooded edges optionally escalate the risk level
+  of their endpoints (Low → Medium → High); a configurable threshold of
+  risk shifts triggers SA re-evaluation; A* replans when the next planned
+  edge is blocked.</li>
+<li>Single source of truth: every module reads/writes the same <code>CityGraph</code>.
+  No module owns a private copy. Tests verify that risk and edge-block
+  changes propagate to GA, SA, and A* costs.</li>
+</ul>
+<h3 id="user-interface">User interface</h3>
+<ul>
+<li>Files: <code>citymind/ui/app.py</code>, <code>citymind/ui/scene.py</code>, <code>citymind/ui/hud.py</code>,
+  <code>citymind/ui/setup_pipeline.py</code>.</li>
+<li>Built with Ursina (3D). Window split into a top status bar, left controls
+  sidebar, right inspector + legend + active overlays, bottom event log.</li>
+<li>Required overlay toggles: roads, ambulance coverage, risk heatmap.</li>
+<li>Bonus overlays: population (residential bar height + tint), KMeans cluster
+  colors, GA hospital↔depot 2-edge-disjoint paths (color-coded path A, B,
+  shared), A* replan trace, CSP diagnostic markers (red pillars on cells
+  that violate hop rules), police pillars.</li>
+<li>Live event log with color coding, animated team movement (interpolation</li>
+<li>halo pulse), animated path "flow", ring on civilian rescue, modal
+  summary panel at end of simulation, snapshot export.</li>
+</ul>
+<hr />
+<h2 id="3-deviations-from-the-phase-1-design-document">3. Deviations from the Phase-1 Design Document</h2>
+<p>We deliberately deviated in five places. Each is justified below.</p>
+<h3 id="31-pygame-ursina-3d-ui">3.1 Pygame → Ursina (3D UI)</h3>
+<p>The design document specified a 2D Pygame UI with a tile grid plus a side
+panel of toggles. After implementing the core algorithms we re-evaluated the
+UI requirement. The project statement asks for overlay toggles, a real-time
+display, and a live event log; it does not constrain the rendering API.</p>
+<p>We chose Ursina because:</p>
+<ul>
+<li>3D rendering makes residential population (bar height) and risk heatmap
+  (color tint) co-presentable at the same time without overlapping
+  glyphs, which a 2D top-down grid struggles with.</li>
+<li>The mouse-driven <code>EditorCamera</code> allowed examiners to inspect the city
+  from any angle during the demo, which we found dramatically improved
+  comprehension of ambulance coverage and GA redundancy paths.</li>
+<li>Ursina is built on Panda3D and runs cross-platform, including on
+  Windows where the team primarily develops.</li>
+<li>We did not need any feature unique to Pygame.</li>
+</ul>
+<p>The algorithmic content is unchanged; only the rendering layer differs.</p>
+<h3 id="32-repair-fallback-in-the-mission-runner">3.2 Repair fallback in the mission runner</h3>
+<p>The design document described replan-on-block but did not specify what to
+do if the team becomes fully isolated. In stress-test runs we observed that
+extreme flooding could leave the team with no exits at all, indefinitely.
+We added a deterministic single-edge "repair" mechanism: after
+<code>repair_after_failures</code> consecutive failed replans (default 2), the runner
+unblocks the single blocked edge on the team's reachable-set boundary that
+minimizes hops to the current target. This keeps the simulation progressing
+while still penalizing failures in the event log.</p>
+<h3 id="33-strict-edge-disjoint-redundancy-check">3.3 Strict edge-disjoint redundancy check</h3>
+<p>The design document described checking redundancy by finding a primary
+hospital→depot path and re-searching after banning each edge of that path.
+That heuristic is strictly weaker than 2-edge-connectivity (Menger's
+theorem). We replaced it with a max-flow-based check (Edmonds-Karp,
+capacity 1 per directed arc) that returns True iff there exist at least
+two edge-disjoint paths. This is provably correct and is what the project
+statement actually asks for.</p>
+<h3 id="34-risk-driven-sa-re-evaluation-threshold">3.4 Risk-driven SA re-evaluation threshold</h3>
+<p>The design said SA "re-evaluates as risk weights shift". We made this
+threshold-driven (<code>sa_reopt_threshold</code>, default 2 risk shifts within a
+tick) to avoid thrashing on every minor risk movement. The threshold is a
+constructor parameter and is exposed through <code>SetupPipeline</code>.</p>
+<h3 id="35-parameterization-for-live-modification">3.5 Parameterization for live-modification</h3>
+<p>The design document hard-coded the 3-hop hospital rule and the 2-hop
+industrial rule. To make the on-the-spot live-modification challenge
+trivial to demonstrate, we promoted these to constructor parameters
+(<code>hospital_max_hops</code>, <code>industrial_max_hops_for_power</code>,
+<code>industrial_forbidden_neighbors</code>) and propagated them through
+<code>SetupPipeline</code>. Changing a rule is now a one-line edit; the CSP
+re-validates immediately.</p>
+<h3 id="36-additional-overlays">3.6 Additional overlays</h3>
+<p>The design listed three overlays (roads, coverage, risk heatmap). We
+added five more (population, clusters, GA redundancy paths, A* trace,
+CSP diagnostics) because each one directly visualizes an algorithm we
+implemented. They are all hidden by default and only the three required
+overlays are on at startup.</p>
+<hr />
+<h2 id="4-ai-concept-coverage-rubric-3">4. AI-Concept Coverage (rubric §3)</h2>
+<p>The rubric requires at least four distinct AI techniques. We use six:</p>
+<ol>
+<li><strong>Constraint Satisfaction</strong>; Ch1: AC-3, Backtracking (MRV/LCV), Min-Conflicts.</li>
+<li><strong>Informed Search</strong>; Ch4: A* with admissible heuristic.</li>
+<li><strong>Evolutionary / Genetic Search</strong>; Ch2: GA on edge bitstrings with MST seeding.</li>
+<li><strong>Local Search</strong>; Ch3: Simulated Annealing with adaptive initial temperature.</li>
+<li><strong>Unsupervised Learning</strong>; Ch5.1: K-Means.</li>
+<li><strong>Supervised Learning</strong>; Ch5.3: Decision Tree.</li>
+</ol>
+<p>Auxiliary classical algorithms used but not counted as "AI techniques":
+Dijkstra (effective-cost shortest paths), BFS (hop distance and reachability),
+Edmonds-Karp max-flow (Menger's theorem for k=2), greedy maximum-coverage
+(police deployment).</p>
+<hr />
+<h2 id="5-testing">5. Testing</h2>
+<p>The repository ships a <code>pytest</code> test suite covering:</p>
+<ul>
+<li>Shared graph: edges, risk multipliers, blocked state, accessibility.</li>
+<li>Challenge 1: AC-3 + backtracking determinism, infeasible-instance fallback,
+  per-rule violation breakdown, quota-mismatch detection.</li>
+<li>Challenge 2: candidate-edge generation, connectivity penalty, the new
+  strict 2-edge-disjoint check (cycle accepted, articulation rejected,
+  bridge-only rejected), seed determinism.</li>
+<li>Challenge 3: SA state shape, objective improves over random baseline,
+  determinism, dynamic cost awareness when risk and blocks change.</li>
+<li>Challenge 4: A* matches Dijkstra cost, finds alternates around blocks,
+  reports unreachable, admissibility guard rejects too-high heuristic floor.</li>
+<li>Challenge 5: K-Means feature schema, deterministic clustering, synthetic
+  label distribution, Decision Tree accuracy and confusion matrix shape,
+  risk multiplier flow into all consumers.</li>
+<li>Police deployment: count cap, max-coverage objective beats random
+  baseline, min-spacing enforced.</li>
+<li>Simulation runner: ordered target completion, replan on next-edge block,
+  no revisit of completed targets, smoke logs, repair semantics, replan-fail
+  log not spammed, risk shifts + SA re-eval triggered on flooded edges,
+  direct unit tests of <code>_apply_risk_shifts</code>.</li>
+<li>Setup pipeline: byte-for-byte determinism, mission-seed sensitivity.</li>
+<li>UI smoke (skipped without display): single-tick run, every overlay toggle,
+  cell click + inspector populated, snapshot export, summary modal.</li>
+</ul>
+<p>Headless run:</p>
+<pre><code class="language-bash">pytest -q
+CITYMIND_SKIP_URSINA=1 pytest -q   # for CI without a display
+</code></pre>
+<hr />
+<h2 id="6-work-split">6. Work Split</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Owner</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CityGraph</code> shared model</td>
+<td>24i-0663</td>
+<td>Foundation; co-reviewed before implementation</td>
+</tr>
+<tr>
+<td>Challenge 1; CSP solver and infeasibility diagnostics</td>
+<td>24i-0663</td>
+<td></td>
+</tr>
+<tr>
+<td>Challenge 2; GA + MST seeding + strict redundancy check + early stop</td>
+<td>24i-0663</td>
+<td></td>
+</tr>
+<tr>
+<td>Challenge 3; Simulated Annealing</td>
+<td>24i-0663</td>
+<td></td>
+</tr>
+<tr>
+<td>Simulation runner + flood manager + risk shifts + repair fallback</td>
+<td>24i-0663</td>
+<td></td>
+</tr>
+<tr>
+<td>Challenge 4; A* router and admissibility guard</td>
+<td>24i-3033</td>
+<td></td>
+</tr>
+<tr>
+<td>Challenge 5.1; K-Means clustering</td>
+<td>24i-3033</td>
+<td></td>
+</tr>
+<tr>
+<td>Challenge 5.2; Synthetic data + Decision Tree</td>
+<td>24i-3033</td>
+<td></td>
+</tr>
+<tr>
+<td>Challenge 5.3; Risk write-back integration</td>
+<td>24i-3033</td>
+<td></td>
+</tr>
+<tr>
+<td>Police deployment (greedy max-coverage)</td>
+<td>24i-3033</td>
+<td></td>
+</tr>
+<tr>
+<td>Ursina 3D scene, HUD, setup pipeline, UI controls</td>
+<td>Both</td>
+<td>Co-designed and co-implemented; final UI behavior and controls validated jointly</td>
+</tr>
+<tr>
+<td>Cross-module integration testing, snapshot/export, viva prep</td>
+<td>Both</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-acceptance-criteria">7. Acceptance Criteria</h2>
+<ul>
+<li><code>pytest -q</code> passes locally on Windows.</li>
+<li><code>CITYMIND_SKIP_URSINA=1 pytest -q</code> passes on a headless environment.</li>
+<li><code>python app.py</code> exercises every challenge module in sequence.</li>
+<li><code>python -m citymind.ui</code> launches the 3D UI; HUD shows layout status,
+  required overlays toggle, live event log scrolls, snapshot export works.</li>
+<li>Live-modification behavior is reproducible when seed values are recorded in
+  HUD and event log.</li>
+</ul>
+<hr />
+<p><em>End of Phase 2 Final Report.</em></p>
+      </main>
+    </div>
+  </body>
+</html>

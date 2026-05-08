@@ -1,0 +1,4 @@
+pytest>=8,<9
+numpy>=1.26,<3
+scikit-learn>=1.4,<2
+ursina>=5.0,<7
